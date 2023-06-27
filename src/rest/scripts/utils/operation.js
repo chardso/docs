@@ -4,8 +4,9 @@ import { readFile } from 'fs/promises'
 import { get, isPlainObject } from 'lodash-es'
 import { parseTemplate } from 'url-template'
 import path from 'path'
+import mergeAllOf from 'json-schema-merge-allof'
 
-import renderContent from '../../../../lib/render-content/index.js'
+import { renderContent } from '#src/content-render/index.js'
 import getCodeSamples from './create-rest-examples.js'
 import operationSchema from './operation-schema.js'
 import { validateData } from './validate-data.js'
@@ -143,8 +144,9 @@ export default class Operation {
     if (this.#operation.operationId === 'checks/create') {
       delete schema.oneOf
     }
-
-    this.bodyParameters = isPlainObject(schema) ? await getBodyParams(schema, true) : []
+    // Merges any instances of allOf in the schema using a deep merge
+    const mergedAllofSchema = mergeAllOf(schema)
+    this.bodyParameters = isPlainObject(schema) ? await getBodyParams(mergedAllofSchema, true) : []
   }
 
   async renderPreviewNotes() {

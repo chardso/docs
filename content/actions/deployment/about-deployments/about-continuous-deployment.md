@@ -13,8 +13,7 @@ topics:
   - CD
 shortTitle: About continuous deployment
 ---
-
-{% data reusables.actions.enterprise-beta %}
+ 
 {% data reusables.actions.enterprise-github-hosted-runners %}
 
 ## About continuous deployment
@@ -48,4 +47,3 @@ You can configure your CD workflow to run when a {% data variables.product.produ
 - [AUTOTITLE](/actions/deployment/about-deployments/deploying-with-github-actions)
 - [AUTOTITLE](/actions/deployment/targeting-different-environments/using-environments-for-deployment){% ifversion fpt or ghec %}
 - "[AUTOTITLE](/billing/managing-billing-for-github-actions)"{% endif %}
-

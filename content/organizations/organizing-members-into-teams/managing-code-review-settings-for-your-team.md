@@ -30,6 +30,7 @@ To reduce noise for your team and clarify individual responsibility for pull req
 When you choose to only notify requested team members, you disable sending notifications to the entire team when the team is requested to review a pull request if a specific member of that team is also requested for review. This is especially useful when a repository is configured with teams as code owners, but contributors to the repository often know a specific individual that would be the correct reviewer for their pull request. For more information, see "[AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)."
 
 ## About auto assignment
+
 {% endif %}
 
 When you enable auto assignment, any time your team has been requested to review a pull request, the team is removed as a reviewer and a specified subset of team members are assigned in the team's place. Code review assignments allow you to decide whether the whole team or just a subset of team members are notified when a team is requested for review.
@@ -47,6 +48,7 @@ The load balance algorithm chooses reviewers based on each member's total number
 Any team members that have set their status to "Busy" will not be selected for review. If all team members are busy, the pull request will remain assigned to the team itself. For more information about user statuses, see "[AUTOTITLE](/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/personalizing-your-profile#setting-a-status)."
 
 {% ifversion only-notify-requested-members %}
+
 ## Configuring team notifications
 
 {% data reusables.profile.access_org %}
@@ -54,7 +56,7 @@ Any team members that have set their status to "Busy" will not be selected for r
 {% data reusables.organizations.specific_team %}
 {% data reusables.organizations.team_settings %}
 {% ifversion fpt or ghec or ghes > 3.4 or ghae > 3.4 %}
-1. In the left sidebar, click **{% octicon "code-review" aria-label="The code-review icon" %} Code review**.
+1. In the left sidebar, click **{% octicon "code-review" aria-hidden="true" %} Code review**.
 {% else %}
 1. In the left sidebar, click **Code review**
 {% endif %}
@@ -69,7 +71,7 @@ Any team members that have set their status to "Busy" will not be selected for r
 {% data reusables.organizations.specific_team %}
 {% data reusables.organizations.team_settings %}
 {% ifversion fpt or ghec or ghes > 3.4 or ghae > 3.4 %}
-1. In the left sidebar, click **{% octicon "code-review" aria-label="The code-review icon" %} Code review**.
+1. In the left sidebar, click **{% octicon "code-review" aria-hidden="true" %} Code review**.
 {% else %}
 1. In the left sidebar, click **Code review**
 {% endif %}

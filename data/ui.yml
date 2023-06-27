@@ -38,6 +38,7 @@ search:
   label: Search GitHub Docs
   n_results: '{n} results'
   one_result: 1 result
+  search_validation_error: Validation error with search query
 homepage:
   explore_by_product: Explore by product
   version_picker: Version
@@ -133,6 +134,14 @@ products:
       actions_api_title: Actions
     versioning:
       about_versions: About REST API versions
+    overview:
+      permissions:
+        access: Access
+        endpoints: Endpoint
+        tokens: Token types
+        additionalPermissions: Additional permissions
+        uat: UAT
+        iat: IAT
     reference:
       in: In
       description: Description

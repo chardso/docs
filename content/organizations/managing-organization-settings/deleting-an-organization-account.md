@@ -17,6 +17,7 @@ shortTitle: Delete organization
 ---
 
 ## About deletion of your organization account
+
 {% ifversion fpt or ghec %}
 {% tip %}
 
@@ -35,6 +36,10 @@ Deleting your organization account removes all repositories, forks of private re
 
 {% data reusables.package_registry.delete-account-namespace-retirement %}
 
+{% ifversion archive-organizations %}
+You can also archive an organization, instead of deleting it. Archiving an organization will make it read-only. For more information, see "[AUTOTITLE](/organizations/managing-organization-settings/archiving-an-organization)."
+{% endif %}
+
 ## Backing up your organization content
 
 {% ifversion not ghes %} After you delete an organization, {% data variables.product.company_short %} **cannot restore your content**. Therefore, before{% else %}Before{% endif %} you delete your organization, make sure you have a copy of all repositories, wikis, issues, and project boards from the account.
@@ -51,5 +56,5 @@ Deleting your organization account removes all repositories, forks of private re
 
 {% data reusables.profile.access_org %}
 {% data reusables.profile.org_settings %}
-4. Near the bottom of the organization's settings page, click **Delete this Organization**.
-   ![Delete this organization button](/assets/images/help/settings/settings-organization-delete.png)
+1. In the "Danger zone" section, click **Delete this organization**.
+1. Read the warning. If you want to proceed, type the organization's name, then click **Cancel plan and delete the organization**.

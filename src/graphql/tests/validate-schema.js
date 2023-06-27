@@ -8,7 +8,7 @@ import { allVersions } from '../../../lib/all-versions.js'
 import { GRAPHQL_DATA_DIR } from '../lib/index.js'
 
 const allVersionValues = Object.values(allVersions)
-const graphqlVersions = allVersionValues.map((v) => v.miscVersionName)
+const graphqlVersions = allVersionValues.map((v) => v.openApiVersionName)
 const graphqlTypes = readJsonFile('./src/graphql/lib/types.json').map((t) => t.kind)
 
 const ajv = new Ajv({ allErrors: true, allowUnionTypes: true })
@@ -24,15 +24,15 @@ graphqlTypes.forEach((type) => {
 describe('graphql json files', () => {
   jest.setTimeout(3 * 60 * 1000)
 
-  test('schemas object validation', () => {
-    // The typeObj is repeated thousands of times in each .json file
-    // so use a cache of which we've already validated to speed this
-    // test up significantly.
-    const typeObjsTested = new Set()
-    graphqlVersions.forEach((version) => {
-      const schemaJsonPerVersion = readJsonFile(`${GRAPHQL_DATA_DIR}/${version}/schema.json`)
-      // all graphql types are arrays except for queries
-      graphqlTypes.forEach((type) => {
+  // The typeObj is repeated thousands of times in each .json file
+  // so use a cache of which we've already validated to speed this
+  // test up significantly.
+  const typeObjsTested = new Set()
+  graphqlVersions.forEach((version) => {
+    const schemaJsonPerVersion = readJsonFile(`${GRAPHQL_DATA_DIR}/${version}/schema.json`)
+    // all graphql types are arrays except for queries
+    graphqlTypes.forEach((type) => {
+      test(`${version} schemas object validation for ${type}`, () => {
         schemaJsonPerVersion[type].forEach((typeObj) => {
           const key = JSON.stringify(typeObj) + type
           if (typeObjsTested.has(key)) return

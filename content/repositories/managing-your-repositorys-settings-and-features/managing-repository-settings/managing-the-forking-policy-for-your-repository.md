@@ -20,8 +20,7 @@ An organization owner must allow forks of private{% ifversion ghae or ghes or gh
 
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.sidebar-settings %}
-3. Under "Features", select **Allow forking**.
-  ![Checkbox to allow or disallow forking of a private repository](/assets/images/help/repository/allow-forking-specific-org-repo.png)
+1. Under "Features", select **Allow forking**.
 
 ## Further reading
 

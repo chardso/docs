@@ -1,6 +1,6 @@
 ---
-title: Authenticating to the REST API with an OAuth App
-shortTitle: Authenticating with OAuth App
+title: Authenticating to the REST API with an OAuth app
+shortTitle: Authenticate with an {% data variables.product.prodname_oauth_app %}
 intro: Learn about the different ways to authenticate with some examples.
 redirect_from:
   - /guides/basics-of-authentication
@@ -29,8 +29,8 @@ You can download the complete source code for this project [from the platform-sa
 
 ## Registering your app
 
-First, you'll need to [register your application][new oauth app]. Every
-registered OAuth application is assigned a unique Client ID and Client Secret.
+First, you'll need to [register your application](https://github.com/settings/applications/new). Every
+registered {% data variables.product.prodname_oauth_app %} is assigned a unique Client ID and Client Secret.
 The Client Secret should not be shared! That includes checking the string
 into your repository.
 
@@ -359,13 +359,12 @@ the same callback URL, we've got to do a little bit of wonkiness to make it work
 Also, if we had never authorized this application to access our {% data variables.product.product_name %} data,
 we would've seen the same confirmation dialog from earlier pop-up and warn us.
 
-[webflow]: /apps/building-oauth-apps/authorizing-oauth-apps/
+[webflow]: /apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps
 [Sinatra]: http://www.sinatrarb.com/
 [about env vars]: http://en.wikipedia.org/wiki/Environment_variable#Getting_and_setting_environment_variables
 [Sinatra guide]: https://github.com/sinatra/sinatra-book/blob/master/book/Introduction.markdown#hello-world-application
 [REST Client]: https://github.com/archiloque/rest-client
-[libraries]: /libraries/
-[oauth scopes]: /apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
+[libraries]: /rest/overview/libraries
+[oauth scopes]: /apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps
 [platform samples]: https://github.com/github/platform-samples/tree/master/api/ruby/basics-of-authentication
-[new oauth app]: https://github.com/settings/applications/new
 [app settings]: https://github.com/settings/developers

@@ -1,5 +1,5 @@
 ---
-title: GitHub Codespaces Documentation
+title: GitHub Codespaces documentation
 shortTitle: GitHub Codespaces
 intro: 'Create a codespace to start developing in a secure, configurable, and dedicated development environment that works how and where you want it to.'
 introLinks:
@@ -37,7 +37,6 @@ redirect_from:
   - /github/developing-online-with-github-codespaces
   - /github/developing-online-with-codespaces
 layout: product-landing
-examples_source: data/product-examples/codespaces/code-examples.yml
 versions:
   fpt: '*'
   ghec: '*'

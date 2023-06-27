@@ -123,7 +123,11 @@ async function main() {
 
   if (pipelines.includes('github-apps')) {
     console.log(`\n▶️  Generating GitHub Apps data files...\n`)
-    await syncGitHubAppsData(TEMP_OPENAPI_DIR, restSchemas)
+    await syncGitHubAppsData(
+      TEMP_OPENAPI_DIR,
+      restSchemas,
+      sourceRepo === 'github' && GITHUB_REP_DIR
+    )
   }
 
   if (pipelines.includes('rest-redirects')) {
@@ -234,6 +238,8 @@ async function validateInputParameters() {
 // names to use the names in the src/<pipeline>/lib/config.json file.
 // The names in the config.json file maps the incoming version name to
 // the short name of the version defined in lib/allVersions.js.
+// This function also translates calendar-date format from .2022-11-28 to
+// -2022-11-28
 export async function normalizeDataVersionNames(sourceDirectory) {
   const schemas = await readdir(sourceDirectory)
 
@@ -242,10 +248,20 @@ export async function normalizeDataVersionNames(sourceDirectory) {
     const matchingSourceVersion = Object.keys(VERSION_NAMES).find((version) =>
       baseName.startsWith(version)
     )
-    const docsCounterpart = VERSION_NAMES[matchingSourceVersion]
-    const calendar = baseName.replace(matchingSourceVersion, '')
-    const date = calendar.startsWith('.') ? `-${calendar.slice(1)}` : `${calendar}`
-    const translatedVersion = `${docsCounterpart}${date !== '-' ? date : ''}.json`
+    // Update the version name to use docs convention, e.g.,
+    // api.github.com.2022-11-28 -> fpt.2022-11-28
+    const docsBaseName = baseName.replace(
+      matchingSourceVersion,
+      VERSION_NAMES[matchingSourceVersion]
+    )
+    // Match a calendar version if it exists, e.g., .2022-11-28
+    const regex = /.\d{4}-\d{2}-\d{2}/
+    const matches = baseName.match(regex)
+    // Separate the version name from the calendar date version
+    const versionName = matches ? docsBaseName.replace(matches[0], '') : docsBaseName
+    const calendarSuffix = matches ? matches[0].replace('.', '-') : ''
+    // Build the new version name
+    const translatedVersion = `${versionName}${calendarSuffix}.json`
     await rename(path.join(sourceDirectory, schema), path.join(sourceDirectory, translatedVersion))
   }
 }

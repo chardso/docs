@@ -1,6 +1,6 @@
 ---
 title: Ifversion liquid tag
-intro: Tests functionality of `ifversion` and its operators
+intro: 'Tests functionality of `ifversion` and its operators {% ifversion not fpt %}(not on fpt){% else %}(on fpt){% endif %}'
 versions:
   fpt: '*'
   ghes: '*'
@@ -28,7 +28,6 @@ condition-d
 {% elsif ghes %}
 condition-e
 {% endif %}
-
 
 ## ifversion with ranges
 
@@ -68,7 +67,7 @@ condition-l
 
 {% ifversion ghes %}
 condition-m
-  {% ifversion ghes = 3.4 %}
+  {% ifversion ghes = 3.5 %}
   condition-n
   {% endif %}
 {% endif %}
@@ -78,4 +77,3 @@ condition-m
 {% ifversion not fpt and ghes > 3.4 %}
 condition-o
 {% endif %}
-
